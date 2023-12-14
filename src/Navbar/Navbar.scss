@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertikale Ausrichtung zentrieren */
+    background-color: #e1a6ad; /* Hintergrundfarbe anpassen */
+    color: white; /* Textfarbe anpassen */
+    height: 100px;
+  }
+  
+  .links {
+    display: flex;
+    align-items: center; /* Vertikale Ausrichtung zentrieren */
+    height: 100%;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: white; /* Textfarbe anpassen */
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Comic Sans als Schriftart */
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 100%; /* Höhe auf 100% setzen */
+    display: flex; /* Text horizontal und vertikal zentrieren */
+    justify-content: center; /* Text horizontal zentrieren */
+    align-items: center; /* Text vertikal zentrieren */
+    transition: color 0.3s, background-color 0.3s; /* Sanfte Transition hinzufügen */
+  
+    &:hover {
+      color: #e1a6ad; /* Aktive Link-Farbe anpassen */
+      background-color: white;
+    }
+  }
+  
+  .active {
+    color: #e1a6ad; /* Aktive Link-Farbe anpassen */
+    background-color: white;
+  }
+  
