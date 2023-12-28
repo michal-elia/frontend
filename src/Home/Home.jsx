@@ -31,8 +31,6 @@ const Home = () => {
   return (
     <div className="container">
       <img src={HomeBild} alt="Brautpaar" className='HomeBild' />
-      
-
       <div className="countdown-container">
         <div className="countdown-element">
           <div className="countdown-value">{days}</div>
@@ -51,11 +49,19 @@ const Home = () => {
           <div className="countdown-label">Sekunden</div>
         </div>
       </div>
-      <h1>Willkommen zu Hause!</h1>
-      <p>Dies ist die Startseite Ihrer Anwendung.</p>
-      <p>Genießen Sie Ihren Aufenthalt!</p>
+
+      
+
+      <div className='text-container'>
+        <div className='text'>
+        <h1>Willkommen zu Hause!</h1>
+        <p>Dies ist die Startseite Ihrer Anwendung.</p>
+        <p>Genießen Sie Ihren Aufenthalt!</p>
+        </div>
+        
+      </div>
     </div>
   );
 };
 
-export default Home;  
+export default Home;

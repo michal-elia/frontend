@@ -7,25 +7,24 @@
   .countdown-container {
     display: flex;
     gap: 60px;
-    align-items: center; /* Zentriert die Elemente vertikal */
+    align-items: center;
     justify-content: center;
     margin-top: -120px;
   }
   
   .countdown-element {
-    font-size: 40px; /* Größere Schriftgröße für das Countdown-Element */
+    font-size: 40px;
     font-weight: bold;
     text-align: center;
-    background-color: #808080; /* Graue Farbe für die Kreise */
+    background-color: #808080;
     border-radius: 50%;
-    width: 250px; /* Ändern Sie die Breite und Höhe nach Bedarf */
+    width: 250px;
     height: 250px;
-    color: white; /* Textfarbe im Kreis */
-  
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Comic Sans MS', cursive; /* Ändern Sie die Schriftart hier */
+    font-family: 'Comic Sans MS', cursive;
   }
   
   .countdown-label {
@@ -38,11 +37,23 @@
     justify-content: center;
     align-items: center;
     margin-top: 75px;
-    font-family: 'Comic Sans MS', cursive; /* Ändern Sie die Schriftart hier */
+    font-family: 'Comic Sans MS', cursive;
   }
   
   .HomeBild {
     width: 1200px;
     justify-content: center;
-    
   }
+  
+  .text-container {
+    background-color: white;
+    width: 1200px;
+    margin-top: -130px; /* Negative Margin für Anpassung */
+    z-index: -1; 
+  }
+
+  .text {
+    margin-top: 160px;
+    margin-left: 30px;
+  }
+  

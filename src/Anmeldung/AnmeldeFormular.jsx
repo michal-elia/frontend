@@ -9,7 +9,7 @@ const AnmeldeFormular = () => {
     vorname: '',
     nachname: '',
     anzahlPersonen: 1,
-    menuAuswahl: 'Menu1',
+    menuAuswahl: 'Lasagne mit Fleisch',
   });
   const [isSubmitted, setIsSubmitted] = useState(false); // Neue Zustandsvariable
 
@@ -27,48 +27,7 @@ const AnmeldeFormular = () => {
     fetchData();
   }, [isSubmitted]);
 
-  const handleDeleteAnmeldung = async (anmeldungId) => {
-    const isConfirmed = window.confirm('Bist du sicher, dass du diese Anmeldung löschen möchtest?');
-
-    if (isConfirmed) {
-      try {
-        const response = await axios.delete(`http://localhost:3001/anmeldungen/${anmeldungId}`);
-        console.log('Anmeldung erfolgreich gelöscht:', response.data);
-
-        const updatedAnmeldungen = submittedData.filter(anmeldung => anmeldung.id !== anmeldungId);
-        setSubmittedData(updatedAnmeldungen);
-      } catch (error) {
-        console.error('Fehler beim Löschen der Anmeldung:', error);
-      }
-    } else {
-      console.log('Löschen abgebrochen.');
-    }
-  };
-
-  const handleEditAnmeldung = (anmeldung) => {
-    setEditedAnmeldung(anmeldung);
-  };
-
-  const handleCancelEdit = () => {
-    setEditedAnmeldung(null);
-  };
-
-  const handleSaveEdit = async () => {
-    try {
-      const response = await axios.put(`http://localhost:3001/anmeldungen/${editedAnmeldung.id}`, editedAnmeldung);
-      console.log('Anmeldung erfolgreich aktualisiert:', response.data);
-
-      const updatedAnmeldungen = submittedData.map(anmeldung =>
-        anmeldung.id === editedAnmeldung.id ? response.data : anmeldung
-      );
-
-      setSubmittedData(updatedAnmeldungen);
-      setEditedAnmeldung(null);
-    } catch (error) {
-      console.error('Fehler beim Aktualisieren der Anmeldung:', error);
-    }
-  };
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewAnmeldung((prevAnmeldung) => ({
@@ -129,6 +88,7 @@ const AnmeldeFormular = () => {
                   value="Lasagne mit Fleisch"
                   checked={newAnmeldung.menuAuswahl === 'Lasagne mit Fleisch'}
                   onChange={handleMenuChange}
+                  className='menuAuswahl'
                   required
                 />
                 Lasagne mit Fleisch
@@ -152,35 +112,7 @@ const AnmeldeFormular = () => {
         )}
       </div>
 
-      {/* Liste der vorhandenen Anmeldungen */}
-      <div className="anmeldungen-container">
-        {submittedData.map((anmeldung) => (
-          <div key={anmeldung.id} className="anmeldung-box">
-            <p>Vorname: {anmeldung.vorname}</p>
-            <p>Nachname: {anmeldung.nachname}</p>
-            <p>Anzahl Personen: {anmeldung.anzahlPersonen}</p>
-            <p>Menüauswahl: {anmeldung.menuAuswahl}</p>
-
-            {editedAnmeldung && editedAnmeldung.id === anmeldung.id ? (
-              <>
-                {/* Hier die bearbeitbaren Formularelemente für die Anmeldung */}
-                <button onClick={handleSaveEdit}>Speichern</button>
-                <button onClick={handleCancelEdit}>Abbrechen</button>
-              </>
-            ) : (
-              <>
-                {/* Hier die nicht bearbeitbaren Anzeigeelemente für die Anmeldung */}
-                <button className='delete' onClick={() => handleDeleteAnmeldung(anmeldung.id)}>
-                  Löschen
-                </button>
-                <button className='edit' onClick={() => handleEditAnmeldung(anmeldung)}>
-                  Bearbeiten
-                </button>
-              </>
-            )}
-          </div>
-        ))}
-      </div>
+     
     </div>
   );
 };

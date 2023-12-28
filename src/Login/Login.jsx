@@ -1,53 +1,49 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import './Login.scss';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+
 
   const handleLogin = (e) => {
-    e.preventDefault(); // Verhindert die Standardaktion des Formulars (Seitenneuladung)
+    e.preventDefault();
 
-    // Hier sollte die Authentifizierungslogik implementiert werden
-    // Zum Beispiel: Überprüfe Benutzername und Passwort mit einer Serveranfrage
 
-    // Dummy-Überprüfung
+
     if (username === 'Gast' && password === '240824') {
-      setLoggedIn(true);
-      window.location = "/anmeldungen"
-      alert('Login erfolgreich!');
+      window.location = '/anmeldung';
+    } else if (username === 'admin' && password === '123') {
+      window.location = '/anmeldungen';
     } else {
       alert('Falscher Benutzername oder Passwort.');
     }
   };
 
   return (
-    <div>
-      {loggedIn ? (
-        <p>Du bist eingeloggt!</p>
-      ) : (
-        <form onSubmit={handleLogin}>
-          <label>
-            Benutzername:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            Passwort:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <br />
-          <button type="submit">Einloggen</button>
-        </form>
-      )}
+    <div className="login-container">
+      <form onSubmit={handleLogin} className="login-form">
+        <label>
+          Benutzername:
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Passwort:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <br />
+        <button type="submit">Einloggen</button>
+      </form>
     </div>
   );
 };

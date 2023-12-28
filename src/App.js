@@ -8,6 +8,7 @@ import Home from './Home/Home';
 import Fotos from './Fotos/Fotos';
 import Login from './Login/Login';
 import Anmeldungen from './Admin/Anmeldungen/Anmeldungen';
+import TrauungFormular from './Trauung/TrauungFormular';
 
 
 
@@ -47,6 +48,16 @@ function App() {
               <>
               <Navbar />
                 <AnmeldeFormular />
+              </>
+            }
+          />
+
+<Route
+            path="/trauung"
+            element={
+              <>
+              <Navbar />
+                <TrauungFormular />
               </>
             }
           />
