@@ -18,6 +18,9 @@ function Navbar() {
         <Link to="/fotos" className={`nav-link ${currentPath === '/fotos' ? 'active' : ''}`}>
           Fotos
         </Link>
+        <Link to="/infos" className={`nav-link ${currentPath === '/infos' ? 'active' : ''}`}>
+          Infos
+        </Link>
         <Link to="/login" className={`nav-link ${currentPath === '/login' ? 'active' : ''}`}>
           Login
         </Link>

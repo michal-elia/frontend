@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .info-container {
+    background-color: white;
+    width: 1200px;
+    margin-top: -130px; /* Negative Margin für Anpassung */
+    z-index: -1;
+  }
+  
+  .info-text {
+    margin-top: 160px;
+    margin-left: 30px;
+  }
+  
+  .imported-image {
+    width: 1200px;
+    justify-content: center;
+  }

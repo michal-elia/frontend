@@ -6,23 +6,23 @@ const Home = () => {
   const targetDate = new Date('2024-08-24T00:00');
   const [countdown, setCountdown] = useState(0);
 
-  const calculateCountdown = () => {
-    const now = new Date();
-    const remainingTime = targetDate.getTime() - now.getTime();
-
-    if (remainingTime <= 0) {
-      setCountdown(0);
-    } else {
-      setCountdown(Math.floor(remainingTime / 1000));
-    }
-  };
-
   useEffect(() => {
+    const calculateCountdown = () => {
+      const now = new Date();
+      const remainingTime = targetDate.getTime() - now.getTime();
+  
+      if (remainingTime <= 0) {
+        setCountdown(0);
+      } else {
+        setCountdown(Math.floor(remainingTime / 1000));
+      }
+    };
+  
     const timer = setInterval(calculateCountdown, 1000);
-
+  
     return () => clearInterval(timer);
+    // eslint-disable-next-line
   }, []);
-
   const days = Math.floor(countdown / (24 * 60 * 60));
   const hours = Math.floor((countdown % (24 * 60 * 60)) / 3600);
   const minutes = Math.floor((countdown % 3600) / 60);
@@ -50,15 +50,12 @@ const Home = () => {
         </div>
       </div>
 
-      
-
       <div className='text-container'>
         <div className='text'>
-        <h1>Willkommen zu Hause!</h1>
-        <p>Dies ist die Startseite Ihrer Anwendung.</p>
-        <p>Genießen Sie Ihren Aufenthalt!</p>
+          <h1>Willkommen zu Hause!</h1>
+          <p>Dies ist die Startseite Ihrer Anwendung.</p>
+          <p>Genießen Sie Ihren Aufenthalt!</p>
         </div>
-        
       </div>
     </div>
   );

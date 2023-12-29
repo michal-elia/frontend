@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from './Navbar/Navbar';
 import AnmeldeFormular from './Anmeldung/AnmeldeFormular';
@@ -9,12 +9,9 @@ import Fotos from './Fotos/Fotos';
 import Login from './Login/Login';
 import Anmeldungen from './Admin/Anmeldungen/Anmeldungen';
 import TrauungFormular from './Trauung/TrauungFormular';
+import Infos from './Infos/Infos';
 
 
-
-function Navigation() {
-  return <Navbar />;
-}
 
 function App() {
 
@@ -30,6 +27,16 @@ function App() {
               <>
               <Navbar />
                 <Home />
+              </>
+            }
+          />
+
+<Route
+            path="/infos"
+            element={
+              <>
+              <Navbar />
+                <Infos />
               </>
             }
           />
