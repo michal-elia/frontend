@@ -14,7 +14,7 @@
   transform: translateY(-50%);
 
   @media (max-width: 600px) {
-    flex-direction: column;
+    flex-direction: row; /* Countdown-Kreise wieder horizontal anordnen */
     gap: 10px;
     justify-content: center; /* Bei kleineren Bildschirmen zentrieren */
     margin-top: -2vw; /* Anpassung des oberen Rands */
@@ -40,8 +40,8 @@
 
   @media (max-width: 600px) {
     font-size: 8vw;
-    width: 40vw;
-    height: 40vw;
+    width: 20vw; /* Anpassung der Breite für bessere Ansicht auf kleinen Bildschirmen */
+    height: 20vw;
   }
 }
 
@@ -88,19 +88,55 @@
 
 @media (max-width: 600px) {
   .countdown-container {
-    flex-direction: column;
+    flex-direction: row; /* Countdown-Kreise wieder horizontal anordnen */
     gap: 10px;
     margin-top: 0; /* Kein zusätzlicher oberer Rand bei kleineren Bildschirmen */
   }
 
   .countdown-element {
-    font-size: 8vw;
-    width: 40vw;
-    height: 40vw;
+    font-size: 6vw;
+    width: 20vw; /* Anpassung der Breite für bessere Ansicht auf kleinen Bildschirmen */
+    height: 20vw;
   }
 
   .countdown-label {
+    font-size: 2vw;
+    margin-top: 2vw;
+  }
+
+  .countdown-value {
+    margin-top: 2vw;
+  }
+
+  .HomeBild {
+    width: 100% !important; /* 100% Breite auch auf kleinen Bildschirmen */
+  }
+
+  .text-container {
+    margin-top: 0; /* Kein zusätzlicher oberer Rand bei kleineren Bildschirmen */
+  }
+
+  .text {
+    margin-top: 8vw;
+    margin-left: 1vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .countdown-container {
+    flex-direction: row; /* Countdown-Kreise wieder horizontal anordnen */
+    gap: 10px;
+    margin-top: 0; /* Kein zusätzlicher oberer Rand bei kleineren Bildschirmen */
+  }
+
+  .countdown-element {
     font-size: 4vw;
+    width: 18vw; /* Anpassung der Breite für bessere Ansicht auf kleinen Bildschirmen */
+    height: 18vw;
+  }
+
+  .countdown-label {
+    font-size: 2vw;
     margin-top: 2vw;
   }
 
