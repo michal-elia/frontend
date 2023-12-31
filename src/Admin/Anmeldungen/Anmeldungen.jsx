@@ -148,7 +148,7 @@ const Anmeldungen = () => {
 
       {showSummary && (
         <div className="zusammenfassung">
-          <h3>Zusammenfassung</h3>
+          <h3>Zusammenfassung der Anmeldungen</h3>
           <p>
             Gesamtanzahl Anmeldungen: {anmeldungenData.length}
           </p>
