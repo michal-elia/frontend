@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.scss';
 import HomeBild from './zusammen.jpg';
-import Marry from './marry.jpg'; 
+import Marry from './marry.jpg';
 
 const Home = () => {
   const targetDate = new Date('2024-08-24T00:00');
@@ -11,16 +11,16 @@ const Home = () => {
     const calculateCountdown = () => {
       const now = new Date();
       const remainingTime = targetDate.getTime() - now.getTime();
-  
+
       if (remainingTime <= 0) {
         setCountdown(0);
       } else {
         setCountdown(Math.floor(remainingTime / 1000));
       }
     };
-  
+
     const timer = setInterval(calculateCountdown, 1000);
-  
+
     return () => clearInterval(timer);
     // eslint-disable-next-line
   }, []);
@@ -52,13 +52,13 @@ const Home = () => {
       </div>
 
       <div className='text-container'>
-      
-        <img src={Marry} alt="süss" className='marry' />
+
         <div className='titel'>
+          <img src={Marry} alt="süss" className='marry' />
           <h1>Wir heiraten!</h1>
           <p>Wir möchten dich herzlich einladen zu unserer Hochzeit.</p>
         </div>
-       
+
       </div>
     </div>
   );

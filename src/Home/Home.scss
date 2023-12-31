@@ -51,19 +51,27 @@
 
   overflow: hidden;
 }
-
 .marry {
   width: 100%;
   max-width: 400px;
   max-height: 400px;
-  margin-top: 300px;
+  margin-top: 2vw; /* Reduziere den oberen Abstand */
   border-radius: 50%;
   overflow: hidden;
   object-fit: cover;
-  margin-left: auto; /* Automatische Zentrierung links und rechts */
+  margin-left: auto;
   margin-right: auto;
-  display: block; /* Um die automatische Zentrierung zu ermöglichen */
+  display: block;
 }
+
+@media (max-width: 600px) {
+  .marry {
+    max-width: 300px; /* Verkleinere die maximale Breite auf kleineren Bildschirmen */
+    max-height: 300px; /* Erlaube dem Bild, seine Höhe dynamisch anzupassen */
+    margin-top: 70vw; /* Reduziere den oberen Abstand weiter */
+  }
+}
+
 
 .text-container {
   width: 100%;
@@ -78,12 +86,15 @@
   align-items: center;
   margin-top: -2vw; /* Anpassung des oberen Rands */
   transform: translateY(-50%);
+  top: 0;
+  bottom: 0; /* Setze bottom auf 0, um den unteren Rand zu erreichen */
 }
 
-.text {
+.titel {
   margin-top: 16vw; /* Verwenden von relativen Einheiten für den oberen Rand */
   margin-left: 2vw; /* Verwenden von relativen Einheiten für den linken Rand */
   text-align: center; /* Zentrierung des Texts innerhalb des Textcontainers */
+
 }
 
 @media (max-width: 600px) {
