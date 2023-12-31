@@ -15,8 +15,6 @@ import image9 from './images/9.jpg';
 import image10 from './images/10.jpg';
 import image11 from './images/11.jpg';
 
-
-
 const imageList = [
   { id: 1, src: image1, alt: 'image1' },
   { id: 2, src: image2, alt: 'image2' },
@@ -31,12 +29,25 @@ const imageList = [
   { id: 11, src: image11, alt: 'image11' },
 ];
 
-
 const Fotos = () => {
   const [fullscreenImage, setFullscreenImage] = useState(null);
+  const [prevImage, setPrevImage] = useState(null);
+  const [nextImage, setNextImage] = useState(null);
 
   const toggleFullscreen = (image) => {
     setFullscreenImage(image === fullscreenImage ? null : image);
+    setPrevImage(getPrevImage(image));
+    setNextImage(getNextImage(image));
+  };
+
+  const getPrevImage = (currentImage) => {
+    const currentIndex = imageList.findIndex((img) => img === currentImage);
+    return currentIndex > 0 ? imageList[currentIndex - 1] : null;
+  };
+
+  const getNextImage = (currentImage) => {
+    const currentIndex = imageList.findIndex((img) => img === currentImage);
+    return currentIndex < imageList.length - 1 ? imageList[currentIndex + 1] : null;
   };
 
   return (
@@ -60,6 +71,19 @@ const Fotos = () => {
 
       {fullscreenImage && (
         <div className="fullscreen" onClick={() => toggleFullscreen(null)}>
+          <div className="close-button" onClick={() => toggleFullscreen(null)}>
+            &times;
+          </div>
+          {prevImage && (
+            <div className="arrow left" onClick={() => toggleFullscreen(prevImage)}>
+              &#8249;
+            </div>
+          )}
+          {nextImage && (
+            <div className="arrow right" onClick={() => toggleFullscreen(nextImage)}>
+              &#8250;
+            </div>
+          )}
           <div className="fullscreen-container">
             <img
               src={fullscreenImage.src}
@@ -69,6 +93,7 @@ const Fotos = () => {
           </div>
         </div>
       )}
+
     </div>
   );
 };
