@@ -1,40 +1,95 @@
+// Navbar.scss
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Vertikale Ausrichtung zentrieren */
-    background-color: #e1a6ad; /* Hintergrundfarbe anpassen */
-    color: white; /* Textfarbe anpassen */
-    height: 100px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e1a6ad;
+  color: white;
+  height: 100px;
+  position: relative;
+
   .links {
     display: flex;
-    align-items: center; /* Vertikale Ausrichtung zentrieren */
+    align-items: center;
     height: 100%;
   }
-  
+
   .nav-link {
     text-decoration: none;
-    color: white; /* Textfarbe anpassen */
+    color: white;
     font-weight: bold;
     font-size: 25px;
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* Comic Sans als Schriftart */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     padding-left: 50px;
     padding-right: 50px;
-    height: 100%; /* Höhe auf 100% setzen */
-    display: flex; /* Text horizontal und vertikal zentrieren */
-    justify-content: center; /* Text horizontal zentrieren */
-    align-items: center; /* Text vertikal zentrieren */
-    transition: color 0.3s, background-color 0.3s; /* Sanfte Transition hinzufügen */
-  
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s, background-color 0.3s;
+
     &:hover {
-      color: #e1a6ad; /* Aktive Link-Farbe anpassen */
+      color: #e1a6ad;
       background-color: white;
     }
   }
-  
+
   .active {
-    color: #e1a6ad; /* Aktive Link-Farbe anpassen */
+    color: #e1a6ad;
     background-color: white;
   }
-  
+
+  .burger-menu {
+    display: none;
+    cursor: pointer;
+
+    div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    &.active {
+      div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      div:nth-child(2) {
+        opacity: 0;
+      }
+
+      div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+    }
+  }
+
+  // Media Query für Bildschirme mit einer Breite von 768px oder weniger (Tablets und mobile Geräte)
+  @media (max-width: 768px) {
+    .links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100px;
+      left: 0;
+      right: 0;
+      background-color: #e1a6ad;
+
+      &.burger-menu-active {
+        display: flex;
+      }
+    }
+
+    .burger-menu {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+
+      &.burger-menu-active {
+        display: flex;
+      }
+    }
+  }
+}
