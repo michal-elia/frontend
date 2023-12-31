@@ -1,4 +1,7 @@
-// Navbar.scss
+body.burger-menu-active {
+  background-color: #e1a6ad;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -68,8 +71,6 @@
       }
     }
   }
-
-  // Media Query für Bildschirme mit einer Breite von 768px oder weniger (Tablets und mobile Geräte)
   @media (max-width: 768px) {
     .links {
       display: none;
@@ -79,22 +80,31 @@
       left: 0;
       right: 0;
       background-color: #e1a6ad;
-
+      height: 100%;
+  
       &.burger-menu-active {
         display: flex;
+        height: 100%;
+        background-color: #e1a6ad;
       }
     }
-
+  
+    body.burger-menu-active {
+      background-color: #e1a6ad;
+      height: 100%;
+    }
+  
     .burger-menu {
       display: flex;
       flex-direction: column;
       background-color: #e1a6ad;
       width: 50px;
-
+  
       &.burger-menu-active {
         display: flex;
-        width: 50px;
-      }
+        background-color: #e1a6ad;
+      height: 100%;
+            }
     }
   }
-}
+}  
