@@ -9,8 +9,16 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  justify-content: center;
-  margin-top: -120px;
+  justify-content: space-between; /* space-between verwenden */
+  position: relative; /* Position relativ setzen */
+  transform: translateY(-50%);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center; /* Bei kleineren Bildschirmen zentrieren */
+    margin-top: -2vw; /* Anpassung des oberen Rands */
+  }
 }
 
 .countdown-element {
@@ -25,25 +33,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* Horizontal und vertikal zentrieren */
   font-family: "Comic Sans MS", cursive;
-}
 
-.countdown-label {
-  font-size: 2vw; /* Verwenden von relativen Einheiten für die Schriftgröße */
-  margin-top: 1vw; /* Verwenden von relativen Einheiten für den oberen Rand */
-}
+  top: 50%; /* Obere Hälfte des Countdown-Containers */
 
-.countdown-value {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3vw; /* Verwenden von relativen Einheiten für den oberen Rand */
-  font-family: 'Comic Sans MS', cursive;
+  @media (max-width: 600px) {
+    font-size: 8vw;
+    width: 40vw;
+    height: 40vw;
+  }
 }
 
 .HomeBild {
   width: 100%; /* 100% Breite, um auf verschiedene Bildschirmgrößen zu reagieren */
   max-width: 1200px; /* Maximalbreite für das Bild */
+  position: relative; /* Position relativ setzen */
+  overflow: hidden;
 }
 
 .marry {
@@ -62,7 +68,6 @@
 .text-container {
   width: 100%;
   max-width: 1200px;
-  margin-top: -13vw; /* Verwenden von relativen Einheiten für den oberen Rand */
   z-index: -1; 
   background-color: white;
   margin-left: auto; /* Automatische Zentrierung links und rechts */
@@ -71,6 +76,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: -2vw; /* Anpassung des oberen Rands */
+  transform: translateY(-50%);
 }
 
 .text {
@@ -83,6 +90,7 @@
   .countdown-container {
     flex-direction: column;
     gap: 10px;
+    margin-top: 0; /* Kein zusätzlicher oberer Rand bei kleineren Bildschirmen */
   }
 
   .countdown-element {
@@ -105,7 +113,7 @@
   }
 
   .text-container {
-    margin-top: -6vw;
+    margin-top: 0; /* Kein zusätzlicher oberer Rand bei kleineren Bildschirmen */
   }
 
   .text {
