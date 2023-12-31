@@ -1,59 +1,115 @@
+/* Allgemeine Stile, die auf allen Bildschirmgrößen gelten sollen */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: -120px;
+}
+
+.countdown-element {
+  font-size: 2vw;
+  font-weight: bold;
+  text-align: center;
+  background-color: #808080;
+  border-radius: 50%;
+  width: 14vw;
+  height: 14vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Comic Sans MS", cursive;
+}
+
+.countdown-label {
+  font-size: 2vw; /* Verwenden von relativen Einheiten für die Schriftgröße */
+  margin-top: 1vw; /* Verwenden von relativen Einheiten für den oberen Rand */
+}
+
+.countdown-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vw; /* Verwenden von relativen Einheiten für den oberen Rand */
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.HomeBild {
+  width: 100%; /* 100% Breite, um auf verschiedene Bildschirmgrößen zu reagieren */
+  max-width: 1200px; /* Maximalbreite für das Bild */
+}
+
+.marry {
+  width: 100%;
+  max-width: 400px;
+  max-height: 400px;
+  margin-top: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  margin-left: auto; /* Automatische Zentrierung links und rechts */
+  margin-right: auto;
+  display: block; /* Um die automatische Zentrierung zu ermöglichen */
+}
+
+.text-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: -13vw; /* Verwenden von relativen Einheiten für den oberen Rand */
+  z-index: -1; 
+  background-color: white;
+  margin-left: auto; /* Automatische Zentrierung links und rechts */
+  margin-right: auto;
+  text-align: center; /* Zentrierung des Textcontainers */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  margin-top: 16vw; /* Verwenden von relativen Einheiten für den oberen Rand */
+  margin-left: 2vw; /* Verwenden von relativen Einheiten für den linken Rand */
+  text-align: center; /* Zentrierung des Texts innerhalb des Textcontainers */
+}
+
+@media (max-width: 600px) {
   .countdown-container {
-    display: flex;
-    gap: 60px;
-    align-items: center;
-    justify-content: center;
-    margin-top: -120px;
-  }
-  
-  .countdown-element {
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-    background-color: #808080;
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
-    color: white;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    font-family: 'Comic Sans MS', cursive;
+    gap: 10px;
   }
-  
+
+  .countdown-element {
+    font-size: 8vw;
+    width: 40vw;
+    height: 40vw;
+  }
+
   .countdown-label {
-    font-size: 20px;
-    margin-top: 5px;
+    font-size: 4vw;
+    margin-top: 2vw;
   }
-  
+
   .countdown-value {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 75px;
-    font-family: 'Comic Sans MS', cursive;
+    margin-top: 2vw;
   }
-  
+
   .HomeBild {
-    width: 1200px;
-    justify-content: center;
+    width: 100% !important; /* 100% Breite auch auf kleinen Bildschirmen */
   }
-  
+
   .text-container {
-    background-color: white;
-    width: 1200px;
-    margin-top: -130px; /* Negative Margin für Anpassung */
-    z-index: -1; 
+    margin-top: -6vw;
   }
 
   .text {
-    margin-top: 160px;
-    margin-left: 30px;
+    margin-top: 8vw;
+    margin-left: 1vw;
   }
-  
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.scss';
 import HomeBild from './zusammen.jpg';
+import Marry from './marry.jpg'; 
 
 const Home = () => {
   const targetDate = new Date('2024-08-24T00:00');
@@ -51,11 +52,13 @@ const Home = () => {
       </div>
 
       <div className='text-container'>
-        <div className='text'>
-          <h1>Willkommen zu Hause!</h1>
-          <p>Dies ist die Startseite Ihrer Anwendung.</p>
-          <p>Genießen Sie Ihren Aufenthalt!</p>
+      
+        <img src={Marry} alt="süss" className='marry' />
+        <div className='titel'>
+          <h1>Wir heiraten!</h1>
+          <p>Wir möchten dich herzlich einladen zu unserer Hochzeit.</p>
         </div>
+       
       </div>
     </div>
   );
