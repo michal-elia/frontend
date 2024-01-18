@@ -16,7 +16,7 @@ const AnmeldeFormular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/anmeldungen');
+        const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen');
         console.log('Response data:', response.data);
         setSubmittedData(response.data);
       } catch (error) {
@@ -45,7 +45,7 @@ const AnmeldeFormular = () => {
 
   const handleAddAnmeldung = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/anmeldungen', newAnmeldung);
+      const response = await axios.post('https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen', newAnmeldung);
       console.log('Anmeldung erfolgreich hinzugefügt:', response.data);
 
       setSubmittedData([...submittedData, response.data]);
