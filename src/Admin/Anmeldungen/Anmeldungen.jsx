@@ -10,7 +10,7 @@ const Anmeldungen = () => {
   useEffect(() => {
     const fetchAnmeldungen = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/anmeldungen');
+        const response = (await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen')).data;
         console.log('Anmeldungen Response data:', response.data);
         setAnmeldungenData(response.data);
       } catch (error) {
@@ -20,7 +20,7 @@ const Anmeldungen = () => {
 
     const fetchTrauungen = async () => {
       try {
-        const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/trauungen');
+        const response = (await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/trauungen')).data;
         console.log('Trauungen Response data:', response.data);
 
         if (Array.isArray(response.data)) {
@@ -42,7 +42,7 @@ const Anmeldungen = () => {
 
     if (isConfirmed) {
       try {
-        const response = await axios.delete(`http://localhost:3001/anmeldungen/${anmeldungId}`);
+        const response = (await axios.delete(`https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen/${anmeldungId}`)).data;
         console.log('Anmeldung erfolgreich gelöscht:', response.data);
 
         const updatedAnmeldungen = anmeldungenData.filter(anmeldung => anmeldung.id !== anmeldungId);
@@ -65,7 +65,7 @@ const Anmeldungen = () => {
 
   const handleSaveEdit = async () => {
     try {
-      const response = await axios.put(`http://localhost:3001/anmeldungen/${editedAnmeldung.id}`, editedAnmeldung);
+      const response = (await axios.put(`https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen/${editedAnmeldung.id}`, editedAnmeldung)).data;
       console.log('Anmeldung erfolgreich aktualisiert:', response.data);
 
       const updatedAnmeldungen = anmeldungenData.map(anmeldung =>
@@ -139,6 +139,7 @@ const Anmeldungen = () => {
             ) : (
               <>
                 {/* Hier die nicht bearbeitbaren Anzeigeelemente für die Anmeldung */}
+                {/* ACHTUNG! für die Trauungen brauchst du zusätzliche "handle"-funktionen, da die url nicht gleich ist! */}
                 <button className='delete' onClick={() => handleDeleteAnmeldung(trauung.id)}>
                   Löschen
                 </button>
