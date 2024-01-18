@@ -20,9 +20,14 @@ const Anmeldungen = () => {
 
     const fetchTrauungen = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/trauungen');
+        const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/trauungen');
         console.log('Trauungen Response data:', response.data);
-        setTrauungenData(response.data);
+
+        if (Array.isArray(response.data)) {
+          setTrauungenData(response.data);
+        } else {
+          console.error('Invalid data structure for Trauungen:', response.data);
+        }
       } catch (error) {
         console.error('Error fetching Trauungen data:', error);
       }

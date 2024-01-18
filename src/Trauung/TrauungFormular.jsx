@@ -15,7 +15,7 @@ const TrauungFormular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/trauungen');
+        const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/trauungen');
         console.log('Response data:', response.data);
         setSubmittedData(response.data);
       } catch (error) {
@@ -36,7 +36,7 @@ const TrauungFormular = () => {
 
   const handleAddTrauung = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/trauungen', newTrauung);
+      const response = await axios.post('https://hochzeit-database-backend.onrender.com/api/v1/trauungen', newTrauung);
       console.log('Anmeldung erfolgreich hinzugefügt:', response.data);
 
       setSubmittedData([...submittedData, response.data]);
