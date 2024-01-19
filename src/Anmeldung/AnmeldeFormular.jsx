@@ -4,14 +4,13 @@ import './AnmeldeFormular.scss';
 
 const AnmeldeFormular = () => {
   const [submittedData, setSubmittedData] = useState([]);
-  const [editedAnmeldung, setEditedAnmeldung] = useState(null);
   const [newAnmeldung, setNewAnmeldung] = useState({
     vorname: '',
     nachname: '',
     anzahlPersonen: 1,
     menuAuswahl: 'Lasagne mit Fleisch',
   });
-  const [isSubmitted, setIsSubmitted] = useState(false); // Neue Zustandsvariable
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +26,6 @@ const AnmeldeFormular = () => {
     fetchData();
   }, [isSubmitted]);
 
-  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewAnmeldung((prevAnmeldung) => ({
@@ -42,30 +40,45 @@ const AnmeldeFormular = () => {
       menuAuswahl: e.target.value,
     }));
   };
-
   const handleAddAnmeldung = async () => {
     try {
       const response = await axios.post('https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen', newAnmeldung);
       console.log('Anmeldung erfolgreich hinzugefügt:', response.data);
-
-      setSubmittedData([...submittedData, response.data]);
+  
+      setSubmittedData((prevSubmittedData) => {
+        const newData = Array.isArray(prevSubmittedData) ? prevSubmittedData : [];
+        return [...newData, response.data];
+      });
+  
       setNewAnmeldung({
         vorname: '',
         nachname: '',
         anzahlPersonen: 1,
         menuAuswahl: 'Menu1',
       });
-      setIsSubmitted(true); // Setze den Anmeldestatus auf true nach erfolgreicher Anmeldung
+      setIsSubmitted(true);
+  
+      // Dankesmeldung für 5 Sekunden anzeigen
+      window.alert('Vielen Dank, dass du dich angemeldet hast!');
+      setTimeout(() => {
+        setIsSubmitted(false); // Setze isSubmitted nach 5 Sekunden zurück
+        // Hier kannst du die Umleitung zur Hauptseite vornehmen
+        window.location = "/";
+      }, 5000); // 5000 Millisekunden = 5 Sekunden
     } catch (error) {
       console.error('Fehler beim Hinzufügen der Anmeldung:', error);
     }
   };
+  
+  
+    
+  
+  
 
   return (
     <div>
       <h2>Anmeldeformular</h2>
 
-      {/* Neues Anmeldeformular zum Hinzufügen */}
       <div className='anmelden'>
         {isSubmitted ? (
           <p>VIELEN DANK, DASS DU DICH ANGEMELDET HAST!</p>
@@ -111,8 +124,6 @@ const AnmeldeFormular = () => {
           </>
         )}
       </div>
-
-     
     </div>
   );
 };
