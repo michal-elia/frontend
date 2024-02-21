@@ -61,10 +61,10 @@ const AnmeldeFormular = () => {
       // Dankesmeldung für 5 Sekunden anzeigen
       window.alert('Vielen Dank, dass du dich angemeldet hast!');
       setTimeout(() => {
-        setIsSubmitted(false); // Setze isSubmitted nach 5 Sekunden zurück
-        // Hier kannst du die Umleitung zur Hauptseite vornehmen
+        setIsSubmitted(false);
         window.location = "/";
-      }, 5000); // 5000 Millisekunden = 5 Sekunden
+      }, 0); // Keine Verzögerung
+      
     } catch (error) {
       console.error('Fehler beim Hinzufügen der Anmeldung:', error);
     }
