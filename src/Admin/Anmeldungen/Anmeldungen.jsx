@@ -129,6 +129,14 @@ const Anmeldungen = () => {
     return anmeldungenData.data.filter(anmeldung => anmeldung.menuAuswahl === menuSelection).length;
   };
 
+  const countTrauungPersons = () => {
+    let totalPersons = 0;
+    trauungenData.data.forEach(trauung => {
+      totalPersons += parseInt(trauung.anzahlPersonen);
+    });
+    return totalPersons;
+  };
+
   return (
     <div className='anmeldungen'>
       <h2>Alle Anmeldungen</h2>
@@ -198,6 +206,10 @@ const Anmeldungen = () => {
           </p>
           <p>
             Anzahl Lasagne mit Gemüse: {countMenuSelections('Lasagne mit Gemüse')}
+          </p>
+          <h3>Zusammenfassung der Trauungen</h3>
+          <p>
+            Gesamtanzahl Personen bei Trauungen: {countTrauungPersons()}
           </p>
         </div>
       )}
