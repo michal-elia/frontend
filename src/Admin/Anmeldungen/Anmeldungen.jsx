@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Anmeldungen.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const Anmeldungen = () => {
   const [anmeldungenData, setAnmeldungenData] = useState([]);
@@ -12,7 +14,6 @@ const Anmeldungen = () => {
   const fetchAnmeldungen = async () => {
     try {
       const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen');
-      console.log('Anmeldungen Response data:', response.data);
       setAnmeldungenData(response.data);
     } catch (error) {
       console.error('Error fetching Anmeldungen data:', error);
@@ -22,7 +23,6 @@ const Anmeldungen = () => {
   const fetchTrauungen = async () => {
     try {
       const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/trauungen');
-      console.log('Trauungen Response data:', response.data);
       setTrauungenData(response.data);
     } catch (error) {
       console.error('Error fetching Trauungen data:', error);
@@ -39,15 +39,11 @@ const Anmeldungen = () => {
 
     if (isConfirmed) {
       try {
-        const response = await axios.delete(`https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen/${anmeldungId}`);
-        console.log('Anmeldung erfolgreich gelöscht:', response.data);
-        // Daten erneut abrufen und aktualisieren
+        await axios.delete(`https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen/${anmeldungId}`);
         fetchAnmeldungen();
       } catch (error) {
         console.error('Fehler beim Löschen der Anmeldung:', error);
       }
-    } else {
-      console.log('Löschen abgebrochen.');
     }
   };
 
@@ -56,15 +52,11 @@ const Anmeldungen = () => {
 
     if (isConfirmed) {
       try {
-        const response = await axios.delete(`https://hochzeit-database-backend.onrender.com/api/v1/trauungen/${trauungId}`);
-        console.log('Trauung erfolgreich gelöscht:', response.data);
-        // Daten erneut abrufen und aktualisieren
+        await axios.delete(`https://hochzeit-database-backend.onrender.com/api/v1/trauungen/${trauungId}`);
         fetchTrauungen();
       } catch (error) {
         console.error('Fehler beim Löschen der Trauung:', error);
       }
-    } else {
-      console.log('Löschen abgebrochen.');
     }
   };
 
@@ -83,11 +75,9 @@ const Anmeldungen = () => {
 
   const handleSaveEditAnmeldung = async () => {
     try {
-      const response = await axios.put(`https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen/${editedAnmeldung.id}`, editedAnmeldung);
-      console.log('Anmeldung erfolgreich aktualisiert:', response.data);
-      // Daten erneut abrufen und aktualisieren
+      await axios.put(`https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen/${editedAnmeldung.id}`, editedAnmeldung);
       fetchAnmeldungen();
-      setEditedAnmeldung(null); // Bearbeitungsmodus beenden
+      setEditedAnmeldung(null);
     } catch (error) {
       console.error('Fehler beim Aktualisieren der Anmeldung:', error);
     }
@@ -95,11 +85,9 @@ const Anmeldungen = () => {
 
   const handleSaveEditTrauung = async () => {
     try {
-      const response = await axios.put(`https://hochzeit-database-backend.onrender.com/api/v1/trauungen/${editedTrauung.id}`, editedTrauung);
-      console.log('Trauung erfolgreich aktualisiert:', response.data);
-      // Daten erneut abrufen und aktualisieren
+      await axios.put(`https://hochzeit-database-backend.onrender.com/api/v1/trauungen/${editedTrauung.id}`, editedTrauung);
       fetchTrauungen();
-      setEditedTrauung(null); // Bearbeitungsmodus beenden
+      setEditedTrauung(null);
     } catch (error) {
       console.error('Fehler beim Aktualisieren der Trauung:', error);
     }
@@ -130,17 +118,12 @@ const Anmeldungen = () => {
   };
 
   const countTrauungPersons = () => {
-    let totalPersons = 0;
-    trauungenData.data.forEach(trauung => {
-      totalPersons += parseInt(trauung.anzahlPersonen);
-    });
-    return totalPersons;
+    return trauungenData.data.reduce((total, trauung) => total + parseInt(trauung.anzahlPersonen), 0);
   };
 
   return (
     <div className='anmeldungen'>
       <h2>Alle Anmeldungen</h2>
-      {/* Liste der vorhandenen Anmeldungen */}
 
       <div className="anmeldungen-container">
         {anmeldungenData.data && anmeldungenData.data.map((anmeldung) => (
@@ -151,8 +134,8 @@ const Anmeldungen = () => {
                 <input type="text" name="nachname" value={editedAnmeldung.nachname} onChange={handleInputChangeAnmeldung} />
                 <input type="number" name="anzahlPersonen" value={editedAnmeldung.anzahlPersonen} onChange={handleInputChangeAnmeldung} />
                 <input type="text" name="menuAuswahl" value={editedAnmeldung.menuAuswahl} onChange={handleInputChangeAnmeldung} />
-                <button onClick={handleSaveEditAnmeldung}>Speichern</button>
-                <button onClick={handleCancelEdit}>Abbrechen</button>
+                <button className="save-button" onClick={handleSaveEditAnmeldung}>Speichern</button>
+                <button className="cancel-button" onClick={handleCancelEdit}>Abbrechen</button>
               </div>
             ) : (
               <div>
@@ -160,8 +143,8 @@ const Anmeldungen = () => {
                 <p>Nachname: {anmeldung.nachname}</p>
                 <p>Anzahl Personen: {anmeldung.anzahlPersonen}</p>
                 <p>Menüauswahl: {anmeldung.menuAuswahl}</p>
-                <button onClick={() => handleEditAnmeldung(anmeldung)}>Bearbeiten</button>
-                <button onClick={() => handleDeleteAnmeldung(anmeldung.id)}>Löschen</button>
+                <FontAwesomeIcon icon={faEdit} className="edit-icon" onClick={() => handleEditAnmeldung(anmeldung)} />
+                <FontAwesomeIcon icon={faTrash} className="delete-icon" onClick={() => handleDeleteAnmeldung(anmeldung.id)} />
               </div>
             )}
           </div>
@@ -179,16 +162,16 @@ const Anmeldungen = () => {
                 <input type="text" name="vorname" value={editedTrauung.vorname} onChange={handleInputChangeTrauung} />
                 <input type="text" name="nachname" value={editedTrauung.nachname} onChange={handleInputChangeTrauung} />
                 <input type="number" name="anzahlPersonen" value={editedTrauung.anzahlPersonen} onChange={handleInputChangeTrauung} />
-                <button onClick={handleSaveEditTrauung}>Speichern</button>
-                <button onClick={handleCancelEdit}>Abbrechen</button>
+                <button className="save-button" onClick={handleSaveEditTrauung}>Speichern</button>
+                <button className="cancel-button" onClick={handleCancelEdit}>Abbrechen</button>
               </div>
             ) : (
               <div>
                 <p>Vorname: {trauung.vorname}</p>
                 <p>Nachname: {trauung.nachname}</p>
                 <p>Anzahl Personen: {trauung.anzahlPersonen}</p>
-                <button onClick={() => handleEditTrauung(trauung)}>Bearbeiten</button>
-                <button onClick={() => handleDeleteTrauung(trauung.id)}>Löschen</button>
+                <FontAwesomeIcon icon={faEdit} className="edit-icon" onClick={() => handleEditTrauung(trauung)} />
+                <FontAwesomeIcon icon={faTrash} className="delete-icon" onClick={() => handleDeleteTrauung(trauung.id)} />
               </div>
             )}
           </div>
