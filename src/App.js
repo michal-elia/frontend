@@ -1,7 +1,6 @@
+// App.jsx
 import React from 'react';
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from './Navbar/Navbar';
 import AnmeldeFormular from './Anmeldung/AnmeldeFormular';
 import Home from './Home/Home';
@@ -11,12 +10,9 @@ import Anmeldungen from './Admin/Anmeldungen/Anmeldungen';
 import TrauungFormular from './Trauung/TrauungFormular';
 import Infos from './Infos/Infos';
 
-
+const isAdmin = localStorage.getItem('isAdmin');
 
 function App() {
-
-
-
   return (
     <div className="App">
       <Router>
@@ -25,17 +21,16 @@ function App() {
             path="/"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <Home />
               </>
             }
           />
-
-<Route
+          <Route
             path="/infos"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <Infos />
               </>
             }
@@ -44,7 +39,7 @@ function App() {
             path="/fotos"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <Fotos />
               </>
             }
@@ -53,41 +48,42 @@ function App() {
             path="/anmeldung"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <AnmeldeFormular />
               </>
             }
           />
-
-<Route
+          <Route
             path="/trauung"
             element={
               <>
-              <Navbar />
+                <Navbar />
                 <TrauungFormular />
               </>
             }
           />
-          <Route
-            path="/anmeldungen"
-            element={
-              <>
-              <Navbar />
-                <Anmeldungen />
-              </>
-            }
-          />
-
-<Route
-            path="/login"
-            element={
-              <>
-              <Navbar />
-                <Login />
-              </>
-            }
-          />
-         
+          {isAdmin ? (
+            <Route
+              path="/anmeldungen"
+              element={
+                <>
+                  <Navbar />
+                  <Anmeldungen />
+                </>
+              }
+            />
+          ) : (
+            <Route
+              path="/login"
+              element={
+                <>
+                  <Navbar />
+                  <Login />
+                </>
+              }
+            />
+          )}
+          
         </Routes>
       </Router>
     </div>
@@ -95,5 +91,3 @@ function App() {
 }
 
 export default App;
-
-

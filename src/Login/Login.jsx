@@ -1,21 +1,20 @@
+// Login.jsx
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './Login.scss';
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-
   const handleLogin = (e) => {
     e.preventDefault();
 
-
-
     if (username === 'Gast' && password === '240824') {
-      window.location = '/anmeldung';
+      window.location.href = '/anmeldung';
     } else if (username === 'admin' && password === '123') {
-      window.location = '/anmeldungen';
+      // Setze den Admin-Status in den lokalen Speicher
+      localStorage.setItem('isAdmin', true);
+      window.location.href = '/anmeldungen';
     } else {
       alert('Falscher Benutzername oder Passwort.');
     }
