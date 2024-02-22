@@ -1,0 +1,71 @@
+.anmeldungen {
+    font-family: Arial, sans-serif;
+  
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .anmeldungen-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 20px;
+    }
+  
+    .anmeldung-box {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+  
+      p {
+        margin: 5px 0;
+      }
+    }
+  
+    .trauung {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+  
+      .anmeldung-box {
+        margin-right: 20px;
+        margin-bottom: 20px;
+  
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+      }
+    }
+  
+    .zusammenfassung {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+  
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        margin: 5px 0;
+      }
+    }
+  
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  

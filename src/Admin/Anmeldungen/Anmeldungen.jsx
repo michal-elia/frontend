@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Anmeldungen.scss';
 
 const Anmeldungen = () => {
   const [anmeldungenData, setAnmeldungenData] = useState([]);
@@ -22,14 +23,9 @@ const Anmeldungen = () => {
       try {
         const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/trauungen');
         console.log('Trauungen Response data:', response.data);
-
-        if (Array.isArray(response.data)) {
-          setTrauungenData(response.data);
-        } else {
-          console.error('Invalid data structure for Trauungen:', response.data);
-        }
+        setTrauungenData(response.data);
       } catch (error) {
-        console.error('Error fetching Trauungen data:', error);
+        console.error('Error fetching Anmeldungen data:', error);
       }
     };
 
@@ -110,31 +106,18 @@ const Anmeldungen = () => {
 
       <h2>Alle Anmeldungen Trauung</h2>
       <div className="trauung">
-        {trauungenData.map((trauung) => (
+      {trauungenData.data && trauungenData.data.map((trauung) => (
           <div key={trauung.id} className="anmeldung-box">
             <p>Vorname: {trauung.vorname}</p>
             <p>Nachname: {trauung.nachname}</p>
             <p>Anzahl Personen: {trauung.anzahlPersonen}</p>
+           
 
-            {editedAnmeldung && editedAnmeldung.id === trauung.id ? (
-              <>
-                {/* Hier die bearbeitbaren Formularelemente für die Anmeldung */}
-                <button onClick={handleSaveEdit}>Speichern</button>
-                <button onClick={handleCancelEdit}>Abbrechen</button>
-              </>
-            ) : (
-              <>
-                {/* Hier die nicht bearbeitbaren Anzeigeelemente für die Anmeldung */}
-                <button className='delete' onClick={() => handleDeleteAnmeldung(trauung.id)}>
-                  Löschen
-                </button>
-                <button className='edit' onClick={() => handleEditAnmeldung(trauung)}>
-                  Bearbeiten
-                </button>
-              </>
-            )}
+            {/* Rest des Codes */}
           </div>
         ))}
+       
+       
       </div>
 
       {showSummary && (
