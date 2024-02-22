@@ -10,7 +10,7 @@ const Anmeldungen = () => {
   useEffect(() => {
     const fetchAnmeldungen = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/anmeldungen');
+        const response = await axios.get('https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen');
         console.log('Anmeldungen Response data:', response.data);
         setAnmeldungenData(response.data);
       } catch (error) {
@@ -91,34 +91,20 @@ const Anmeldungen = () => {
     <div className='anmeldungen'>
       <h2>Alle Anmeldungen</h2>
       {/* Liste der vorhandenen Anmeldungen */}
+
       <div className="anmeldungen-container">
-        {anmeldungenData.map((anmeldung) => (
+        {anmeldungenData.data && anmeldungenData.data.map((anmeldung) => (
           <div key={anmeldung.id} className="anmeldung-box">
             <p>Vorname: {anmeldung.vorname}</p>
             <p>Nachname: {anmeldung.nachname}</p>
             <p>Anzahl Personen: {anmeldung.anzahlPersonen}</p>
             <p>Menüauswahl: {anmeldung.menuAuswahl}</p>
 
-            {editedAnmeldung && editedAnmeldung.id === anmeldung.id ? (
-              <>
-                {/* Hier die bearbeitbaren Formularelemente für die Anmeldung */}
-                <button onClick={handleSaveEdit}>Speichern</button>
-                <button onClick={handleCancelEdit}>Abbrechen</button>
-              </>
-            ) : (
-              <>
-                {/* Hier die nicht bearbeitbaren Anzeigeelemente für die Anmeldung */}
-                <button className='delete' onClick={() => handleDeleteAnmeldung(anmeldung.id)}>
-                  Löschen
-                </button>
-                <button className='edit' onClick={() => handleEditAnmeldung(anmeldung)}>
-                  Bearbeiten
-                </button>
-              </>
-            )}
+            {/* Rest des Codes */}
           </div>
         ))}
       </div>
+
 
       <hr />
 
