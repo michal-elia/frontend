@@ -1,0 +1,38 @@
+.wunsch-container {
+    background-color: #f0f0f0; // Hintergrundfarbe
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Schatten
+    max-width: 1200px; // Breite des Containers
+    margin: 0 auto; // Zentriert den Container horizontal
+  }
+  
+  h2 {
+    font-size: 24px; // Größe des Titels
+    margin-bottom: 20px; // Abstand nach unten
+  }
+  
+  .pdf-container {
+    margin-bottom: 20px; // Abstand nach unten
+  }
+  
+  .pdf-viewer {
+    width: 100%; // Breite des PDF-Viewers
+    height: 1000px; // Höhe des PDF-Viewers
+    border: none; // Kein Rahmen
+  }
+  
+  button {
+    padding: 10px 20px; // Innenabstand des Buttons
+    background-color: #007bff; // Hintergrundfarbe des Buttons
+    color: #fff; // Textfarbe
+    border: none; // Kein Rand
+    border-radius: 4px; // Abrundung der Ecken
+    cursor: pointer; // Zeigercursor beim Überfahren
+    font-size: 16px; // Größe des Texts
+  }
+  
+  button:hover {
+    background-color: #0056b3; // Hintergrundfarbe des Buttons beim Überfahren
+  }
+  

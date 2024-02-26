@@ -40,6 +40,13 @@ function Navbar() {
           Infos
         </Link>
         <Link
+          to="/wunschliste"
+          className={`nav-link ${currentPath === '/wunschliste' ? 'active' : ''}`}
+          onClick={() => setBurgerMenuActive(false)}
+        >
+          Wunschliste
+        </Link>
+        <Link
           to="/login"
           className={`nav-link ${currentPath === '/login' ? 'active' : ''}`}
           onClick={() => setBurgerMenuActive(false)}

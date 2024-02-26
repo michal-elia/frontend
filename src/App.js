@@ -9,6 +9,7 @@ import Login from './Login/Login';
 import Anmeldungen from './Admin/Anmeldungen/Anmeldungen';
 import TrauungFormular from './Trauung/TrauungFormular';
 import Infos from './Infos/Infos';
+import Wunschliste from './Wunschliste/Wunschliste';
 
 const isAdmin = localStorage.getItem('isAdmin');
 
@@ -59,6 +60,15 @@ function App() {
               <>
                 <Navbar />
                 <TrauungFormular />
+              </>
+            }
+          />
+          <Route
+            path="/wunschliste"
+            element={
+              <>
+                <Navbar />
+                <Wunschliste />
               </>
             }
           />
