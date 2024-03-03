@@ -1,22 +1,39 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .info-container {
-    background-color: white;
-    width: 1200px;
-    margin-top: -130px; /* Negative Margin für Anpassung */
-    z-index: -1;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-container {
+  background-color: white;
+  width: 1200px; /* Breite des Containers bleibt gleich */
+  margin-top: -130px; /* Negative Margin für Anpassung */
+  z-index: -1;
+
   .info-text {
     margin-top: 160px;
     margin-left: 30px;
   }
-  
-  .imported-image {
-    width: 1200px;
-    justify-content: center;
+}
+
+.imported-image {
+  width: 100%; /* Bild wird auf 100% der Containerbreite gesetzt */
+}
+
+/* Media Queries für Responsive Design */
+@media screen and (max-width: 1200px) {
+  .info-container {
+    width: 100%; /* Container wird auf volle Breite bei kleineren Bildschirmen gesetzt */
+    margin-top: 0; /* Zurücksetzen des Margins */
   }
+
+  .imported-image {
+    width: 100%; /* Bild wird auf 100% der Containerbreite gesetzt */
+  }
+
+  .info-text {
+    margin-left: 10px; /* Anpassung des Textmargins */
+  }
+}
+
+/* Weitere Media Queries für andere Bildschirmgrößen können hier hinzugefügt werden */
