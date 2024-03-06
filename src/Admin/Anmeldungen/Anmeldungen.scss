@@ -1,41 +1,42 @@
 .anmeldungen {
   font-family: Arial, sans-serif;
-
+  background-color: rgb(242, 244, 248, 0.9);
+  padding: 40px;
+  
   h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 30px;
     color: #333;
   }
 
   .anmeldungen-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 30px;
   }
 
   .anmeldung-box {
-    border-radius: 8px;
-    padding: 20px;
-    position: relative;
-    background-color: #f5f5f5;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     p {
-      margin: 10px 0;
+      margin: 15px 0;
       color: #333;
     }
 
     .edit-icon,
     .delete-icon {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 20px;
+      right: 20px;
       cursor: pointer;
       color: #888;
       transition: color 0.3s ease;
@@ -46,16 +47,16 @@
     }
 
     .delete-icon {
-      right: 40px;
+      right: 50px;
     }
 
     .save-button,
     .cancel-button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       background-color: #007bff;
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s ease;
 
@@ -65,7 +66,7 @@
 
       &.cancel-button {
         background-color: #dc3545;
-        margin-left: 10px;
+        margin-left: 15px;
 
         &:hover {
           background-color: #bd2130;
@@ -88,13 +89,13 @@
   }
 
   .trauung {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
 
     .anmeldung-box {
-      margin-right: 20px;
-      margin-bottom: 20px;
+      margin-right: 30px;
+      margin-bottom: 30px;
 
       &:nth-child(2n) {
         margin-right: 0;
@@ -103,31 +104,31 @@
   }
 
   .zusammenfassung {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 
     h3 {
-      font-size: 24px;
+      font-size: 28px;
       margin-bottom: 20px;
       color: #333;
     }
 
     p {
-      margin: 10px 0;
+      margin: 15px 0;
       color: #666;
     }
   }
 
   button {
-    padding: 12px 24px;
+    padding: 14px 28px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 

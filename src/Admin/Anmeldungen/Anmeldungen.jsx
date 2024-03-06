@@ -162,7 +162,7 @@ const Anmeldungen = () => {
       <hr />
 
       <h2>Alle Anmeldungen Trauung</h2>
-      <div className="trauung">
+      <div className="anmeldungen-container">
         {trauungenData.data && trauungenData.data.map((trauung) => (
           <div key={trauung.id} className="anmeldung-box">
             {editedTrauung && editedTrauung.id === trauung.id ? (
