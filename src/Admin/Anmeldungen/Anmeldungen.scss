@@ -4,6 +4,7 @@
   h2 {
     font-size: 24px;
     margin-bottom: 20px;
+    color: #333;
   }
 
   .anmeldungen-container {
@@ -13,13 +14,21 @@
   }
 
   .anmeldung-box {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
+    border-radius: 8px;
+    padding: 20px;
     position: relative;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
 
     p {
-      margin: 5px 0;
+      margin: 10px 0;
+      color: #333;
     }
 
     .edit-icon,
@@ -32,7 +41,7 @@
       transition: color 0.3s ease;
 
       &:hover {
-        color: #333;
+        color: #555;
       }
     }
 
@@ -42,7 +51,7 @@
 
     .save-button,
     .cancel-button {
-      padding: 8px 15px;
+      padding: 10px 20px;
       background-color: #007bff;
       color: #fff;
       border: none;
@@ -61,6 +70,19 @@
         &:hover {
           background-color: #bd2130;
         }
+      }
+    }
+
+    &.error {
+      background-color: #ffe6e6;
+      border-color: #ff9999;
+
+      input,
+      textarea,
+      select {
+        pointer-events: none;
+        background-color: #fff;
+        border: 1px solid #ff9999;
       }
     }
   }
@@ -82,23 +104,26 @@
 
   .zusammenfassung {
     margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 8px;
     background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 
     h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
     }
 
     p {
-      margin: 5px 0;
+      margin: 10px 0;
+      color: #666;
     }
   }
 
   button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: #007bff;
     color: #fff;
     border: none;
