@@ -1,14 +1,25 @@
 // Navbar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
 
 function Navbar() {
   const currentPath = window.location.pathname;
   const [burgerMenuActive, setBurgerMenuActive] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const adminStatus = localStorage.getItem('isAdmin');
+    setIsAdmin(adminStatus === 'true');
+  }, []);
 
   const toggleBurgerMenu = () => {
     setBurgerMenuActive(!burgerMenuActive);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAdmin');
+    window.location.href = '/';
   };
 
   return (
@@ -46,13 +57,26 @@ function Navbar() {
         >
           Wunschliste
         </Link>
-        <Link
-          to="/login"
-          className={`nav-link ${currentPath === '/login' ? 'active' : ''}`}
-          onClick={() => setBurgerMenuActive(false)}
-        >
-          Login
-        </Link>
+        {isAdmin ? (
+          <>
+            <Link
+              to="/anmeldungen"
+              className={`nav-link ${currentPath === '/anmeldungen' ? 'active' : ''}`}
+              onClick={() => setBurgerMenuActive(false)}
+            >
+              Admin
+            </Link>
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className={`nav-link ${currentPath === '/login' ? 'active' : ''}`}
+            onClick={() => setBurgerMenuActive(false)}
+          >
+            Login
+          </Link>
+        )}
         {/* Füge hier weitere Links hinzu, falls nötig */}
       </div>
 
