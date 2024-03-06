@@ -117,8 +117,16 @@ const Anmeldungen = () => {
     return anmeldungenData.data.filter(anmeldung => anmeldung.menuAuswahl === menuSelection).length;
   };
 
+  const countTotalAnmeldungen = () => {
+    return anmeldungenData.data.reduce((total, anmeldung) => total + parseInt(anmeldung.anzahlPersonen), 0);
+  };
+
   const countTrauungPersons = () => {
     return trauungenData.data.reduce((total, trauung) => total + parseInt(trauung.anzahlPersonen), 0);
+  };
+
+  const countTotalPersons = () => {
+    return countTotalAnmeldungen() + countTrauungPersons();
   };
 
   return (
@@ -193,6 +201,10 @@ const Anmeldungen = () => {
           <h3>Zusammenfassung der Trauungen</h3>
           <p>
             Gesamtanzahl Personen bei Trauungen: {countTrauungPersons()}
+          </p>
+          <h3>Gesamtanzahl Personen</h3>
+          <p>
+            Gesamtanzahl Personen: {countTotalPersons()}
           </p>
         </div>
       )}
