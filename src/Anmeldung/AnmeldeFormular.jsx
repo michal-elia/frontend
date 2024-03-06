@@ -11,6 +11,7 @@ const AnmeldeFormular = () => {
     menuAuswahl: 'Lasagne mit Fleisch',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null); // Zustand für Fehler
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +21,7 @@ const AnmeldeFormular = () => {
         setSubmittedData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setError('Fehler: Bitte versuchen Sie es später erneut!'); // Fehler setzen
       }
     };
 
@@ -40,16 +42,17 @@ const AnmeldeFormular = () => {
       menuAuswahl: e.target.value,
     }));
   };
+
   const handleAddAnmeldung = async () => {
     try {
       const response = await axios.post('https://hochzeit-database-backend.onrender.com/api/v1/anmeldungen', newAnmeldung);
       console.log('Anmeldung erfolgreich hinzugefügt:', response.data);
-  
+
       setSubmittedData((prevSubmittedData) => {
         const newData = Array.isArray(prevSubmittedData) ? prevSubmittedData : [];
         return [...newData, response.data];
       });
-  
+
       setNewAnmeldung({
         vorname: '',
         nachname: '',
@@ -57,31 +60,27 @@ const AnmeldeFormular = () => {
         menuAuswahl: 'Menu1',
       });
       setIsSubmitted(true);
-  
+
       // Dankesmeldung für 5 Sekunden anzeigen
       window.alert('Vielen Dank, dass du dich angemeldet hast!');
       setTimeout(() => {
         setIsSubmitted(false);
         window.location = "/";
       }, 0); // Keine Verzögerung
-      
+
     } catch (error) {
       console.error('Fehler beim Hinzufügen der Anmeldung:', error);
+      setError('Fehler: Bitte versuchen Sie es später erneut!'); // Fehler setzen
     }
   };
-  
-  
-    
-  
-  
 
   return (
     <div>
       <h2>Anmeldeformular</h2>
 
       <div className='anmelden'>
-        {isSubmitted ? (
-          <p>VIELEN DANK, DASS DU DICH ANGEMELDET HAST!</p>
+        {error ? ( // Überprüfen Sie, ob ein Fehler aufgetreten ist
+          <p style={{ color: 'red', backgroundColor: 'white' }}>{error}</p>
         ) : (
           <>
             <label>Vorname:</label>
