@@ -1,7 +1,7 @@
-// Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 function Navbar() {
   const currentPath = window.location.pathname;
@@ -64,9 +64,12 @@ function Navbar() {
               className={`nav-link ${currentPath === '/anmeldungen' ? 'active' : ''}`}
               onClick={() => setBurgerMenuActive(false)}
             >
-              Admin
+              Anmeldungen
             </Link>
-            <button className="logout-button" onClick={handleLogout}>Logout</button>
+            <p className='admin'>Admin</p>
+            <button className="logout-button" onClick={handleLogout}>
+              <FaSignOutAlt />
+            </button>
           </>
         ) : (
           <Link
