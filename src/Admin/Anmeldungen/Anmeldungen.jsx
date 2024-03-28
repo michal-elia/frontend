@@ -10,6 +10,7 @@ const Anmeldungen = () => {
   const [showSummary, setShowSummary] = useState(false);
   const [editedAnmeldung, setEditedAnmeldung] = useState(null);
   const [editedTrauung, setEditedTrauung] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const fetchAnmeldungen = async () => {
     try {
@@ -128,13 +129,29 @@ const Anmeldungen = () => {
   const countTotalPersons = () => {
     return countTotalAnmeldungen() + countTrauungPersons();
   };
-
+  const filteredAnmeldungen = anmeldungenData.data ? anmeldungenData.data.filter(anmeldung =>
+    anmeldung.vorname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    anmeldung.nachname.toLowerCase().includes(searchTerm.toLowerCase())
+  ) : [];
+  
+  const filteredTrauungen = trauungenData.data ? trauungenData.data.filter(trauung =>
+    trauung.vorname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    trauung.nachname.toLowerCase().includes(searchTerm.toLowerCase())
+  ) : [];
+  
+  
   return (
     <div className='anmeldungen'>
       <h2>Alle Anmeldungen</h2>
+      <input
+        type="text"
+        placeholder="Suche nach Vorname oder Nachname"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
 
       <div className="anmeldungen-container">
-        {anmeldungenData.data && anmeldungenData.data.map((anmeldung) => (
+        {filteredAnmeldungen.map((anmeldung) => (
           <div key={anmeldung.id} className="anmeldung-box">
             {editedAnmeldung && editedAnmeldung.id === anmeldung.id ? (
               <div>
