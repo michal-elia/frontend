@@ -53,7 +53,7 @@
         display: flex; // Stelle sicher, dass die Links die Höhe vollständig ausfüllen
         align-items: center; // Zentriere den Text vertikal
         padding: 0 20px; // Füge horizontalen Abstand hinzu
-        font-size: 23px;
+        font-size: 23px; // Größe des Textes auf 23px erhöhen
         font-weight: 400;
         color: #ffffff; /* Farbe von der normalen Navbar */
         text-decoration: none;
@@ -63,11 +63,7 @@
           color: #e1a6ad; /* Farbe von der normalen Navbar */
           background-color: #ffffff;
           font-weight: 500;
-
-          
         }
-
-       
       }
     }
   }
@@ -89,7 +85,7 @@
       overflow: hidden;
 
       &.active {
-        width: 500px;
+        width: 100%; // Ändere die Breite auf 100%, um die Navbar auf kleinen Geräten vollständig anzuzeigen
 
         ul {
           flex-direction: column;
