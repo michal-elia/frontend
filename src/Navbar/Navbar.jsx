@@ -23,72 +23,55 @@ function Navbar() {
   };
 
   return (
-    <div className={`navbar ${burgerMenuActive ? 'burger-menu-active' : ''}`}>
-      <div className='logo-container'>
-        {/* Hier kannst du dein Logo einfügen */}
-      </div>
-
-      <div className={`links ${burgerMenuActive ? 'burger-menu-active' : ''}`}>
-        <Link
-          to="/"
-          className={`nav-link ${currentPath === '/' ? 'active' : ''}`}
-          onClick={() => setBurgerMenuActive(false)}
-        >
-          Home
-        </Link>
-        <Link
-          to="/fotos"
-          className={`nav-link ${currentPath === '/fotos' ? 'active' : ''}`}
-          onClick={() => setBurgerMenuActive(false)}
-        >
-          Fotos
-        </Link>
-        <Link
-          to="/infos"
-          className={`nav-link ${currentPath === '/infos' ? 'active' : ''}`}
-          onClick={() => setBurgerMenuActive(false)}
-        >
-          Infos
-        </Link>
-        <Link
-          to="/wunschliste"
-          className={`nav-link ${currentPath === '/wunschliste' ? 'active' : ''}`}
-          onClick={() => setBurgerMenuActive(false)}
-        >
-          Wunschliste
-        </Link>
-        {isAdmin ? (
-          <>
-            <Link
-              to="/anmeldungen"
-              className={`nav-link ${currentPath === '/anmeldungen' ? 'active' : ''}`}
-              onClick={() => setBurgerMenuActive(false)}
-            >
-              Anmeldungen
-            </Link>
-            <p className='admin'>Admin</p>
-            <button className="logout-button" onClick={handleLogout}>
-              <FaSignOutAlt />
-            </button>
-          </>
-        ) : (
-          <Link
-            to="/login"
-            className={`nav-link ${currentPath === '/login' ? 'active' : ''}`}
-            onClick={() => setBurgerMenuActive(false)}
-          >
-            Login
-          </Link>
-        )}
-        {/* Füge hier weitere Links hinzu, falls nötig */}
-      </div>
-
-      <div className={`burger-menu ${burgerMenuActive ? 'active' : ''}`} onClick={toggleBurgerMenu}>
-        <div></div>
-        <div></div>
-        <div></div>
+  <div className={`navbar ${burgerMenuActive ? 'burger-menu-active' : ''}`}>
+      <div className='container'>
+        {
+          /* 
+           <div className='logo-container'>
+          <img alt='logo' className='logo' src={logo} />
+        </div>
+          */
+        }
+       
+        <div className={`menu-icon ${burgerMenuActive ? 'active' : ''}`} onClick={toggleBurgerMenu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className={`nav-elements ${burgerMenuActive ? 'active' : ''}`}>
+          <ul>
+            <NavItem to="/" text="Home" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
+            <NavItem to="/fotos" text="Fotos" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
+            <NavItem to="/infos" text="Infos" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
+            <NavItem to="/wunschliste" text="Wunschliste" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
+            
+    
+            {isAdmin ? (
+              <>
+ <NavItem to="/anmeldungen" text="Anmeldungen" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
+              <p className='admin'>Admin</p>
+              <button className="logout-button" onClick={handleLogout}>
+                <FaSignOutAlt />
+              </button>
+              </>
+            ) : (
+              <NavItem to="/login" text="Login" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
+            )}
+          </ul>
+        </div>
       </div>
     </div>
+  );
+}
+
+function NavItem({ to, text, currentPath, onClick }) {
+  return (
+    <li>
+      <Link to={to} className={currentPath === to ? 'active' : ''} onClick={onClick}>
+        {text}
+        {currentPath === to && <span className="active-indicator"></span>}
+      </Link>
+    </li>
   );
 }
 

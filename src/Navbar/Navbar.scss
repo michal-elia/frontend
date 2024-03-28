@@ -1,51 +1,22 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #e1a6ad;
-  color: white;
   height: 100px;
+  background-color: #e1a6ad; /* Farbe von der normalen Navbar */
   position: relative;
+  display: flex; /* Flexbox-Layout für die Navbar */
+  align-items: center; /* Vertikale Ausrichtung der Navbar-Elemente */
+  font-family: 'Comic Sans', 'Comic Sans MS', cursive; // Alternativ 'Comic Sans MS' verwenden, um sicherzustellen, dass die Schriftart auf allen Geräten verfügbar ist
 
-  .links {
-    display: flex;
-    align-items: center;
-    height: 100%;
+  .logo {
+    max-height: 100%;
   }
-
-  .nav-link {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    padding-left: 50px;
-    padding-right: 50px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: color 0.3s, background-color 0.3s;
-
-    &:hover {
-      color: #e1a6ad;
-      background-color: white;
-    }
-  }
-
-  .active {
-    color: #e1a6ad;
-    background-color: white;
-  }
-
-  .burger-menu {
+ 
+  .menu-icon {
     display: none;
-    cursor: pointer;
 
     div {
       width: 30px;
       height: 3px;
-      background-color: white;
+      background-color: #ffffff; /* Farbe von der normalen Navbar */
       margin: 6px 0;
       transition: 0.4s;
     }
@@ -68,71 +39,66 @@
     }
   }
 
-  .logout-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 25px;
-    color: white;
-    transition: color 0.3s;
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s, background-color 0.3s;
+  .nav-elements {
+    ul {
+      display: flex; /* Flexbox-Layout für die Navbar-Elemente */
+      list-style-type: none;
 
-    &:hover {
-      color: #e1a6ad;
-      background-color: white;
-    }
-  }
+      li:not(:last-child) {
+        margin-right: 60px;
+      }
 
-  .admin {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    padding-left: 50px;
-    padding-right: 50px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+      a {
+        height: 100px; // Setze die Höhe der Links auf 100px
+        display: flex; // Stelle sicher, dass die Links die Höhe vollständig ausfüllen
+        align-items: center; // Zentriere den Text vertikal
+        padding: 0 20px; // Füge horizontalen Abstand hinzu
+        font-size: 23px;
+        font-weight: 400;
+        color: #ffffff; /* Farbe von der normalen Navbar */
+        text-decoration: none;
+        position: relative;
 
-  @media (max-width: 768px) {
-    .links {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 100px;
-      left: 0;
-      right: 0;
-      background-color: #e1a6ad;
-      height: 100%;
+        &.active {
+          color: #e1a6ad; /* Farbe von der normalen Navbar */
+          background-color: #ffffff;
+          font-weight: 500;
 
-      &.burger-menu-active {
-        display: flex;
-        height: 100%;
-        background-color: #e1a6ad;
+          
+        }
+
+       
       }
     }
+  }
 
-    body.burger-menu-active {
-      background-color: #e1a6ad;
-      height: 100%;
+  @media (max-width: 600px) {
+    .menu-icon {
+      display: block;
+      cursor: pointer;
     }
 
-    .burger-menu {
-      display: flex;
-      flex-direction: column;
-      background-color: #e1a6ad;
-      width: 50px;
+    .nav-elements {
+      position: absolute;
+      right: 0;
+      top: 60px;
+      background-color: #e1a6ad; /* Farbe von der normalen Navbar */
+      width: 0px;
+      height: calc(100vh - 60px);
+      transition: all 0.3s ease-in;
+      overflow: hidden;
 
-      &.burger-menu-active {
-        display: flex;
-        background-color: #e1a6ad;
-        height: 100%;
+      &.active {
+        width: 500px;
+
+        ul {
+          flex-direction: column;
+
+          li {
+            margin-right: unset;
+            margin-top: 22px;
+          }
+        }
       }
     }
   }
