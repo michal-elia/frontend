@@ -44,7 +44,7 @@ function Navbar() {
             <NavItem to="/fotos" text="Fotos" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
             <NavItem to="/infos" text="Infos" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
             <NavItem to="/wunschliste" text="Wunschliste" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
-            
+            <NavItem to="/bot" text="Fotobot" currentPath={currentPath} onClick={() => setBurgerMenuActive(false)} />
     
             {isAdmin ? (
               <>

@@ -10,6 +10,7 @@ import Anmeldungen from './Admin/Anmeldungen/Anmeldungen';
 import TrauungFormular from './Trauung/TrauungFormular';
 import Infos from './Infos/Infos';
 import Wunschliste from './Wunschliste/Wunschliste';
+import Weddingbot from './Bot/Weddingbot';
 
 const isAdmin = localStorage.getItem('isAdmin');
 
@@ -42,6 +43,15 @@ function App() {
               <>
                 <Navbar />
                 <Fotos />
+              </>
+            }
+          />
+          <Route
+            path="/bot"
+            element={
+              <>
+                <Navbar />
+                <Weddingbot />
               </>
             }
           />
@@ -93,7 +103,7 @@ function App() {
               }
             />
           )}
-          
+
         </Routes>
       </Router>
     </div>

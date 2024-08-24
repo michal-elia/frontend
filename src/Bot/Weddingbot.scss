@@ -1,0 +1,35 @@
+/* Weddingbot.scss */
+
+.wedding-container {
+    background-color: #ffffff; /* Weißer Hintergrund */
+    padding: 30px; /* Abstand innen */
+    border-radius: 12px; /* Sanft abgerundete Ecken */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Leicht verstärkter Schatten für mehr Tiefe */
+    max-width: 900px; /* Maximale Breite */
+    margin: 50px auto; /* Zentrierung des Containers mit Abstand nach oben und unten */
+    text-align: center; /* Zentriert den Inhalt */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Weiche Übergänge für Hover-Effekte */
+  
+    &:hover {
+      transform: translateY(-5px); /* Leichtes Anheben beim Hover */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Stärkerer Schatten beim Hover */
+    }
+  }
+  
+  .image-container {
+    margin: 0 auto; /* Zentrierung des Bildcontainers */
+    overflow: hidden; /* Verhindert das Überlaufen des Inhalts bei abgerundeten Ecken */
+    border-radius: 10px; /* Gleiche Rundung für das Bild selbst */
+    
+    img {
+      width: 100%; /* Bild passt sich der Breite des Containers an */
+      height: auto; /* Beibehaltung des Seitenverhältnisses */
+      display: block; /* Entfernt den unteren Abstand bei Bildern */
+      transition: transform 0.3s ease; /* Übergang für den Hover-Effekt */
+  
+      &:hover {
+        transform: scale(1.05); /* Leichtes Zoomen beim Hover */
+      }
+    }
+  }
+  
